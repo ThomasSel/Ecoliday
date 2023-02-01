@@ -117,9 +117,11 @@ const fetchEmissions = (parameters, activity_id, lca_activity) => {
     }),
   })
     .then((response) => {
+      console.log(response);
       return response.json();
     })
     .then((responseData) => {
+      console.log(responseData);
       return responseData.co2e;
     })
     .catch((error) => {
