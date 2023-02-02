@@ -1,6 +1,5 @@
 const EmissionsController = {
   GetEmissions: async (req, res) => {
-    console.log("Inside EmissionsController.GetEmissions");
     if (!CheckQuery(req, res)) {
       return;
     }
@@ -34,7 +33,6 @@ const formatEmissions = (emissions, passengers) => {
 };
 
 const CheckQuery = (req, res) => {
-  console.log("Inside CheckQuery");
   if (req.query.passengers === undefined || req.query.distance === undefined) {
     res.status(400).send();
     return false;
@@ -52,7 +50,6 @@ const CheckQuery = (req, res) => {
 };
 
 const GetElectricCarEmissions = (req) => {
-  console.log("Inside GetElectricCarEmissions");
   return fetchEmissions(
     { distance: parseInt(req.query.distance) },
     "passenger_vehicle-vehicle_type_car-fuel_source_bev-engine_size_na-vehicle_age_na-vehicle_weight_na",
@@ -61,7 +58,6 @@ const GetElectricCarEmissions = (req) => {
 };
 
 const GetPetrolCarEmissions = (req) => {
-  console.log("Inside GetPetrolCarEmissions");
   return fetchEmissions(
     { distance: parseInt(req.query.distance) },
     "passenger_vehicle-vehicle_type_car-fuel_source_petrol-engine_size_na-vehicle_age_na-vehicle_weight_na",
@@ -70,7 +66,6 @@ const GetPetrolCarEmissions = (req) => {
 };
 
 const GetTrainEmissions = (req) => {
-  console.log("Inside GetTrainEmissions");
   return fetchEmissions(
     {
       distance: parseInt(req.query.distance),
@@ -82,7 +77,6 @@ const GetTrainEmissions = (req) => {
 };
 
 const GetPlaneEmissions = (req) => {
-  console.log("Inside GetPlaneEmissions");
   return fetchEmissions(
     {
       distance: parseInt(req.query.distance),
@@ -117,11 +111,9 @@ const fetchEmissions = (parameters, activity_id, lca_activity) => {
     }),
   })
     .then((response) => {
-      console.log(response);
       return response.json();
     })
     .then((responseData) => {
-      console.log(responseData);
       return responseData.co2e;
     })
     .catch((error) => {
