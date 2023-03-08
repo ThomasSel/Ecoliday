@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx jest",
+    "test": "npx jest --runInBand",
     "start": "npx nodemon ./bin/www"
   },
   "keywords": [],
@@ -12,9 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "@types/jest": "^29.4.0",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "mongodb": "^4.13.0",
     "mongoose": "^6.9.0",
     "nodemon": "^2.0.20",

@@ -1,10 +1,9 @@
 const express = require("express");
 const router = express.Router();
+const DistanceController = require("../controllers/distance");
 
 const EmissionsController = require("../controllers/emissions");
 
-router.get("/", (req, res) => {
-  EmissionsController.GetEmissions(req, res);
-});
+router.get("/", DistanceController.Calculate, EmissionsController.GetEmissions);
 
 module.exports = router;
