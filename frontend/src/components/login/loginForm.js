@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import serverURL from "../../serverUrl";
 import NavBar from "../navBar/navBar";
 
 const LoginForm = ({ navigate }) => {
@@ -16,7 +17,7 @@ const LoginForm = ({ navigate }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    let response = await fetch("/tokens", {
+    let response = await fetch(serverURL() + "/tokens", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

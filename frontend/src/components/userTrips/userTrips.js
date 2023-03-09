@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import serverURL from "../../serverUrl";
 import NavBar from "../navBar/navBar";
 import Trip from "../trip/trip";
 
@@ -8,7 +9,7 @@ const UserTrips = ({ navigate }) => {
 
   useEffect(() => {
     if (token) {
-      fetch("/trips", {
+      fetch(serverURL() + "/trips", {
         headers: {
           Authorization: `Bearer ${token}`,
         },

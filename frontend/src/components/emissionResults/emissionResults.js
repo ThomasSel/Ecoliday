@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import serverURL from "../../serverUrl";
 
 const EmissionResults = ({
   emissions,
@@ -160,29 +161,34 @@ const EmissionResults = ({
           Equivalent to...
           <li>
             <p>
-            <span class="material-symbols-outlined">lunch_dining </span>
-            {`Eating ${Math.ceil(result.emissions.total / CO2eBurger)} ${
-              Math.ceil(result.emissions.total / CO2eBurger) === 1
-                ? "burger"
-                : "burgers"
-            }`}
-          </p></li>
-          <li><p>
-            <span class="material-symbols-outlined">laundry</span>
-            {`Buying ${Math.ceil(result.emissions.total / CO2eTshirt)} ${
-              Math.ceil(result.emissions.total / CO2eTshirt) === 1
-                ? "T-shirt"
-                : "T-shirts"
-            }`}
-          </p></li>
-          <li><p>
-            <span class="material-symbols-outlined">park</span>
-            {`Saving ${Math.ceil(result.emissions.total / CO2eTree)} ${
-              Math.ceil(result.emissions.total / CO2eTree) === 1
-                ? "tree"
-                : "trees"
-            } a year`}
-          </p></li>
+              <span class="material-symbols-outlined">lunch_dining </span>
+              {`Eating ${Math.ceil(result.emissions.total / CO2eBurger)} ${
+                Math.ceil(result.emissions.total / CO2eBurger) === 1
+                  ? "burger"
+                  : "burgers"
+              }`}
+            </p>
+          </li>
+          <li>
+            <p>
+              <span class="material-symbols-outlined">laundry</span>
+              {`Buying ${Math.ceil(result.emissions.total / CO2eTshirt)} ${
+                Math.ceil(result.emissions.total / CO2eTshirt) === 1
+                  ? "T-shirt"
+                  : "T-shirts"
+              }`}
+            </p>
+          </li>
+          <li>
+            <p>
+              <span class="material-symbols-outlined">park</span>
+              {`Saving ${Math.ceil(result.emissions.total / CO2eTree)} ${
+                Math.ceil(result.emissions.total / CO2eTree) === 1
+                  ? "tree"
+                  : "trees"
+              } a year`}
+            </p>
+          </li>
         </ul>
       );
     }
@@ -191,7 +197,7 @@ const EmissionResults = ({
   const handleSave = async (e) => {
     e.preventDefault();
 
-    let response = await fetch("/trips", {
+    let response = await fetch(serverURL() + "/trips", {
       method: "post",
       headers: {
         "Content-Type": "application/json",

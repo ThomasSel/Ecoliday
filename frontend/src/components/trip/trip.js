@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import serverURL from "../../serverUrl";
 
 const Trip = ({ trip, token, setTrips }) => {
   Trip.propTypes = {
@@ -42,7 +43,7 @@ const Trip = ({ trip, token, setTrips }) => {
 
   const handleDelete = async (e) => {
     e.preventDefault();
-    const response = await fetch("/trips", {
+    const response = await fetch(serverURL() + "/trips", {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -56,7 +57,7 @@ const Trip = ({ trip, token, setTrips }) => {
       console.log("trip deleted");
 
       if (token) {
-        fetch("/trips", {
+        fetch(serverURL() + "/trips", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
